@@ -96,9 +96,8 @@ function initDBConnection() {
 initDBConnection();
 
 app.get('/', routes.index);
-app.get('/education', function(req, res){
-  res.render('education.html');
-});
+app.get('/education', function(req, res){res.render('education.html');});
+app.get('/population', function(req, res){res.render('population.html');});
 
 function createResponseData(id, name, value, attachments) {
 
