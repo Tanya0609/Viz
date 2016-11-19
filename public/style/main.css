@@ -2,6 +2,11 @@
 @import url(font-awesome.min.css);
 @import "https://fonts.googleapis.com/css?family=Raleway:100,300,600";
 
+#map {
+  height: 400px;
+  width: 100%;
+}
+
 /*
 	Theory by TEMPLATED
 	templated.co @templatedco
@@ -9,7 +14,6 @@
 */
 
 /* Reset */
-
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
 		padding: 0;
@@ -2724,7 +2728,7 @@
 		}
 
 	#header {
-		color: #d4e0ef;
+		color: #696969;
 		cursor: default;
 		height: 3.25em;
 		left: 0;
@@ -2934,7 +2938,8 @@
 
 	#banner {
 		padding: 12em 0 10em 0;
-		background-image: url('../../images/banner.jpg');
+		/*background-image: url('../../images/banner.jpg');*/
+    background-image: url('../../images/Central_City.jpg');
 		background-size: cover;
 		background-position: top;
 		background-attachment: fixed;
@@ -2945,8 +2950,8 @@
 
 		#banner h1 {
 			font-size: 3.5em;
-			font-weight: 100;
-			color: #fff;
+			font-weight: 500;
+			color: #696969;
 			line-height: 1em;
 			margin: 0 0 0.5em 0;
 			padding: 0;
@@ -2954,7 +2959,7 @@
 
 		#banner p {
 			font-size: 1em;
-			color: rgba(255, 255, 255, 0.55);
+			color: #696969;
 			margin-bottom: 1.75em;
 		}
 
