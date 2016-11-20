@@ -10,6 +10,45 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="style/main.css" />
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	    <script type="text/javascript">
+	      google.charts.load('current', {'packages':['corechart']});
+	      google.charts.setOnLoadCallback(drawChart);
+
+	      function drawChart() {
+	        var data = google.visualization.arrayToDataTable([
+	          ['Year', 'Surrey'],
+	          ['2005',  418330],
+	          ['2006',  432210],
+	          ['2007',  445900],
+	          ['2008',  457960],
+	          ['2009',  465360],
+	          ['2010',  475660],
+	          ['2011',  483930],
+	          ['2012',  492990],
+	          ['2013',  501510],
+	          ['2014',  507580],
+	          ['2015',  516650],
+	          ['2016',  526290],
+	          ['2021',  577590],
+	          ['2026',  630120],
+	          ['2031',  688580],
+	          ['2036',  744490],
+	          ['2041',  789540],
+	          ['2046',  818280]
+	        ]);
+
+	        var options = {
+	          title:'',
+	          curveType: 'function',
+	          legend: { position: 'bottom' }
+	        };
+
+	        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+	        chart.draw(data, options);
+	      }
+	    </script>
 	</head>
 	<body class="subpage">
 
@@ -31,39 +70,34 @@
 				<div class="inner">
 					<header class="align-center">
 						<h2><b>Population In Surrey</b></h2>
-						<p></p>
+						<p>View information about Surrey's growth and population.</p>
 					</header>
 
 				<!-- Content -->
-					<h2 id="content">Population Areas</h2>
-					<p>The city of Surrey is a growing community.</p>
+
 					<div class="row">
-						<div class="6u 12u$(small)">
-							<h3>Sem turpis amet semper</h3>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat commodo eu sed ante lacinia. Sapien a lorem in integer ornare praesent commodo adipiscing arcu in massa commodo lorem accumsan at odio massa ac ac. Semper adipiscing varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-						</div>
-						<div class="6u$ 12u$(small)">
-							<h3>Magna odio tempus commodo</h3>
-							<p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor. Ante commodo blandit adipiscing integer semper orci eget. Faucibus commodo adipiscing mi eu nullam accumsan morbi arcu ornare odio mi adipiscing nascetur lacus ac interdum morbi accumsan vis mi accumsan ac praesent.</p>
-						</div>
 						<!-- Break -->
 						<div class="4u 12u$(medium)">
-							<h3>Interdum sapien gravida</h3>
+							<h3>Population and Projections</h3>
 							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
 						</div>
 						<div class="4u 12u$(medium)">
-							<h3>Faucibus consequat lorem</h3>
+							<h3>Surrey by Region</h3>
 							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
 						</div>
 						<div class="4u$ 12u$(medium)">
-							<h3>Accumsan montes viverra</h3>
+							<h3>Popular Areas to Live in Surrey</h3>
 							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
 						</div>
 					</div>
 
 				<hr class="major" />
 
-					<h2 id="elements">Population</h2>
+					<h2 id="elements">Population and Projections</h2>
+					<p>
+					   The graph below shows the growth since 2005 and the city's poplation projection
+					   for the next 30 years. </p>
+    				<div class="content" id="curve_chart" style="width: %100; height: 500px"></div>	
 
 
 					<div class="row 200%">

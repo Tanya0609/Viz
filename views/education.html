@@ -10,6 +10,57 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="style/main.css" />
+
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	  <script type="text/javascript">
+	    google.charts.load('upcoming', {packages: ['map']});
+	    google.charts.setOnLoadCallback(drawMap);
+
+	    function drawMap () {
+	      var data = new google.visualization.DataTable();
+	      data.addColumn('string', 'Address');
+	      data.addColumn('string', 'Location');
+	      data.addColumn({type: 'string', role: 'tooltip'});
+
+	      data.addRows([
+	        ['Surrey, BC V3S 9R9, Canada',   'Halls Prairie Elementary','Surrey, BC V3S 9R9, Canada'],
+	        ['15877 Roper Ave, White Rock, BC V4B 2H5, Canada','Peace Arch Elementary','15877 Roper Ave, White Rock, BC V4B 2H5, Canada'],
+	        ['Surrey, BC V4N 2Y6, Canada','Woodland Park Elementary','Surrey, BC V4N 2Y6, Canada'],
+	        ['5811 184 St, Surrey, BC V3S 4N2, Canada','Martha Currie Elementary','5811 184 St, Surrey, BC V3S 4N2, Canada']
+	      ]);
+
+	      var options = {
+	        mapType: 'styledMap',
+	        zoomLevel: 12,
+	        showTooltip: true,
+	        showInfoWindow: true,
+	        useMapTypeControl: true,
+	        maps: {
+	          // Your custom mapTypeId holding custom map styles.
+	          styledMap: {
+	            name: 'Styled Map', // This name will be displayed in the map type control.
+	            styles: [
+	              {featureType: 'poi.attraction',
+	               stylers: [{color: '#fce8b2'}]
+	              },
+	              {featureType: 'road.highway',
+	               stylers: [{hue: '#0277bd'}, {saturation: -50}]
+	              },
+	              {featureType: 'road.highway',
+	               elementType: 'labels.icon',
+	               stylers: [{hue: '#000'}, {saturation: 100}, {lightness: 50}]
+	              },
+	              {featureType: 'landscape',
+	               stylers: [{hue: '#259b24'}, {saturation: 10}, {lightness: -22}]
+	              }
+	        ]}}
+	      };
+
+	      var map = new google.visualization.Map(document.getElementById('map_div'));
+
+	      map.draw(data, options);
+	    }
+	  </script>
 	</head>
 	<body class="subpage">
 
@@ -65,7 +116,9 @@
 
 				<!-- Elements -->
 					<h2 id="elements">Schools</h2>
-					<div class="content" id="map"></div>
+					<div class="content" id="map_div" style="height: 500px; width: %100"></div>
+
+<!-- 					<div class="content" id="map"></div>
           <script type="text/javascript">
             function initMap() {
               var coord = {lat: 49.1044 , lng: -122.8011};
@@ -81,7 +134,7 @@
           </script>
 					<script async defer
     			 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBleBsPpyCVunuuaH4QtPn31z77UNUkOZ0&callback=initMap">
-    			</script>
+    			</script> -->
 
 					<div class="row 200%">
 						<div class="6u 12u$(medium)">
