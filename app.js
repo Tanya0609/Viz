@@ -76,20 +76,20 @@ function initDBConnection() {
 		// Variables section for an app in the Bluemix console dashboard).
 		// Alternately you could point to a local database here instead of a 
 		// Bluemix service.
-		//dbCredentials.host = "REPLACE ME";
-		//dbCredentials.port = REPLACE ME;
-		//dbCredentials.user = "REPLACE ME";
-		//dbCredentials.password = "REPLACE ME";
-		//dbCredentials.url = "REPLACE ME";
+		dbCredentials.host = "dashdb-entry-yp-dal09-09.services.dal.bluemix.net";
+		dbCredentials.port = 50001;
+		dbCredentials.user = "dash6911";
+		dbCredentials.password = "NKeAx9IZlXEf";
+		dbCredentials.url = "https://dashdb-entry-yp-dal09-09.services.dal.bluemix.net:8443";
+		//https://dashdb-entry-yp-dal09-09.services.dal.bluemix.net:8443
+		cloudant = require('cloudant')(dbCredentials.url);
 		
-		//cloudant = require('cloudant')(dbCredentials.url);
-		
-		// check if DB exists if not create
-        	//cloudant.db.create(dbCredentials.dbName, function (err, res) {
-        	//    if (err) { console.log('could not create db ', err); }
-        	//});
+		//check if DB exists if not create
+        	cloudant.db.create(dbCredentials.dbName, function (err, res) {
+        	   if (err) { console.log('could not create db ', err); }
+        	});
             
-        	//db = cloudant.use(dbCredentials.dbName);
+        	db = cloudant.use(dbCredentials.dbName);
 	}
 }
 
@@ -144,6 +144,25 @@ var saveDocument = function(id, name, value, response) {
 	});
 	
 }
+
+app.get('/api/test', function(response){
+	var request= "Select CLOVERDALE from POPULATION_CURRENT_AND_PROJECTIONS LIMIT 1"
+	db.get(request.query.id, function(err, body) {
+		if (err) {
+            response.status(500);
+            response.setHeader('Content-Type', 'text/plain');
+            response.write('Error: ' + err);
+            response.end();
+            return;
+        }
+
+        response.status(200);
+        response.setHeader("Content-Disposition", 'inline; filename="' + key + '"');
+        response.write(body);
+        response.end();
+        return;
+	});
+});
 
 app.get('/api/favorites/attach', function(request, response) {
     var doc = request.query.id;
