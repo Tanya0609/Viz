@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+      google.charts.setOnLoadCallback(drawMaterial);
+
+    function drawMaterial() {
+      var data = google.visualization.arrayToDataTable([
+        ['Year', 'Single Family', 'Townhouse'],
+        ['2007',522629,321581],
+        ['2008',502189, 308771],
+        ['2009',522691, 318181],
+        ['2010',538854, 314621],
+        ['2011',570186, 334312],
+        ['2012',560374,311337],
+        ['2013',574099,328614],
+        ['2014',606228,316020]
+      ]);
+      var options = {
+        
+        title: 'House Price of Surrey',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Price',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Year'
+        },
+        bars: 'horizontal'
+      };
+      var material = new google.charts.Bar(document.getElementById('chart_div'));
+      material.draw(data, options);
+    }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
