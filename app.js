@@ -100,6 +100,8 @@ app.get('/education', function(req, res){res.render('education.html');});
 app.get('/population', function(req, res){res.render('population.html');});
 app.get('/general', function(req, res){res.render('general.html');});
 app.get('/resources', function(req, res){res.render('resources.html');});
+app.get('/test', function(req, res){res.render('test.js');});
+
 
 function createResponseData(id, name, value, attachments) {
 

@@ -97,24 +97,62 @@
 					<p>
 					   The graph below shows the growth since 2005 and the city's poplation projection
 					   for the next 30 years. </p>
-    				<div class="content" id="curve_chart" style="width: %100; height: 500px"></div>	
+    				<div class="content" id="curve_chart" style="width: 100%; height: 500px"></div>	
 
+				<h2>Most Populated Areas</h2>
+    			<div class="align-center" id="map"></div>
+		          <script>
+
+		            function initMap() {
+		           
+		              var coord = {lat: 49.1044 , lng: -122.8011};
+		              var map = new google.maps.Map(document.getElementById('map'), {
+		                zoom: 13,
+		                center: coord,
+		              });
+		              var magnitude = [0.72870, 0.60550, 0.63190, 1.35930, 0.88630, 1.05120];
+		              //var magnitude = [0, 0.60550, 0.63190, 1.35930, 0, 1.05120];
+				      
+
+			      	//Cloverdale, Fleetwood, Guildford, Newton, South Surrey, Whalley
+			      	var coords = [49.1115,-122.7349,49.1641,-122.7957,49.1987,-122.8125, 49.1137,-122.8536,49.0342, -122.7930,49.1915,-122.8456];
+			        var heatmapData = [];
+				        for (var i = 0; i < 12; i+=2) {
+				          var x=0;
+				          var latLng = new google.maps.LatLng(coords[i], coords[i+1]);
+				          var weightedLoc = {
+									        location: latLng,
+									        weight: (magnitude[x])
+									      };
+				          heatmapData.push(weightedLoc);
+				          x+=1;
+				        }
+				        var heatmap = new google.maps.visualization.HeatmapLayer({
+				          data: heatmapData,
+				          dissipating: false,
+				          map: map
+				        });
+		             }
+
+		          </script>
+					<script async defer
+	    			  src="https://maps.googleapis.com/maps/api/js?key=&libraries=visualization&callback=initMap">
+	    			</script>
 
 					<div class="row 200%">
 						<div class="6u 12u$(medium)">
 
-									<div class="6u$ 12u$(small)">
-
-										<h4>Most Populated Area</h4>
-										<ol>
-											<li>Dolor pulvinar etiam magna etiam.</li>
-											<li>Etiam vel felis at lorem sed viverra.</li>
-											<li>Felis enim feugiat dolore viverra.</li>
-											<li>Dolor pulvinar etiam magna etiam.</li>
-											<li>Etiam vel felis at lorem sed viverra.</li>
-											<li>Felis enim feugiat dolore viverra.</li>
-										</ol>
-									</div>
+						<div class="6u$ 12u$(small)">
+							<div></div>
+							<ol>
+							<li>NEWTON: 	135930</li>
+							<li>WHALLEY/CITY CENTRE: 105120</li>
+							<li>SOUTH_SURREY: 	88630</li>
+							<li>CLOVERDALE:	72870</li>
+							<li>GUILDFORD: 	63190</li>
+							<li>FLEETWOOD: 	60550</li>
+							</ol>
+						</div>
 								</div>
 								<h4>Definition</h4>
 								<dl>
