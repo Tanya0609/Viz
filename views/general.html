@@ -10,6 +10,35 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="style/main.css" />
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	    <script type="text/javascript">
+	      google.charts.load('current', {'packages':['corechart']});
+	      google.charts.setOnLoadCallback(drawChart);
+
+	      function drawChart() {
+	        var data = google.visualization.arrayToDataTable([
+	          ['Year', 'Bachelor', '1 Bedroom','2 Bedroom','3+ Bedroom','Surrey Average','Metro Average'],
+	          ['2008',  577,      709,878,962,799,937],
+	          ['2009',  595,      707,886,995,804,975],
+	          ['2010',  600,      725,880,1015,811,995],
+	          ['2011',  610,      718,897,982,814,1027],
+	          ['2012',  614,      723,886,1015,813,1047],
+	          ['2013',  632,      751,921,1080,846,1067],
+	          ['2014',  713,      760,926,1074,859,1099]
+	        ]);
+
+	        var options = {
+	          title: 'Monthly Rent for Different Room Types',
+	          curveType: 'function',
+	          legend: { position: 'bottom' }
+	        
+	        };
+
+	        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+	        chart.draw(data, options);
+	      }
+	    </script>
 	</head>
 	<body class="subpage">
 
@@ -39,7 +68,7 @@
 				<hr class="major" />
 
 					<h2 id="elements"></h2>
-
+    				<div id="curve_chart" style="width: %100; height: 500px"></div>
 
 					<div class="row 200%">
 						<div class="6u 12u$(medium)">
